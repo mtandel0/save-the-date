@@ -1,0 +1,128 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Michelle & Karan Save the Date</title>
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+      background-color: #fdf9f8;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .card {
+      width: 400px;
+      height: 640px;
+      perspective: 1000px;
+    }
+    .card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.8s;
+      transform-style: preserve-3d;
+      cursor: pointer;
+    }
+    .card:hover .card-inner {
+      transform: rotateY(180deg);
+    }
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    .card-front {
+      background: url('save-the-date-front.png') no-repeat center/cover;
+    }
+    .card-back {
+      background-color: #fdf9f8;
+      transform: rotateY(180deg);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-sizing: border-box;
+      overflow-y: auto;
+    }
+    .text-section {
+      font-size: 14px;
+      color: #6b4e4e;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .text-section b {
+      font-size: 16px;
+      display: block;
+      margin-bottom: 10px;
+    }
+    .german {
+      font-style: italic;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    input, textarea, button {
+      font-family: inherit;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+    button {
+      background-color: #b39292;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #946e6e;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="card-inner">
+      <div class="card-front"></div>
+      <div class="card-back">
+        <div class="text-section">
+          <b>Dear Friends & Family</b>
+          We are so excited to be celebrating our Wedding in Germany and are incredibly grateful for your love and support during this special time in our lives. We understand that traveling such a long distance isn't possible for everyone. Because of this we're planning an Indian Reception in Fall of 2026.
+          <br><br>
+          For those who are hoping to join us in Germany, we do need RSVP in advance. Please let us know if you are planning to come and include your mailing address.
+        </div>
+        <div class="text-section german">
+          <b>Liebe Freunde & Familie</b>
+          Wir freuen uns riesig, unsere Hochzeit in Deutschland zu feiern, und sind unglaublich dankbar für eure Liebe und Unterstützung. Uns ist bewusst, dass eine weite Reise nicht für alle möglich ist. Deshalb planen wir im Herbst 2026 eine indische Feier in den USA.
+          <br><br>
+          Wer zur Hochzeit nach Deutschland kommen möchte, den bitten wir um eine frühzeitige Zusage. Bitte gebt Bescheid, ob ihr kommen könnt, und teilt uns eure Adresse mit.
+        </div>
+        <form action="https://formspree.io/f/xleqgzkk" method="POST">
+          <input type="text" name="name" placeholder="Your Full Name" required>
+          <input type="email" name="email" placeholder="Your Email Address" required>
+          <textarea name="address" placeholder="Your Mailing Address" rows="3" required></textarea>
+          <select name="attendance" required>
+            <option value="" disabled selected>Will you attend in Germany?</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+            <option value="Maybe">Maybe</option>
+          </select>
+          <button type="submit">Send RSVP</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
