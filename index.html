@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Michelle & Karan Save the Date</title>
   <style>
     body {
@@ -15,11 +15,14 @@
       align-items: center;
       height: 100vh;
     }
+
     .card {
       width: 400px;
       height: 640px;
       perspective: 1000px;
+      position: relative;
     }
+
     .card-inner {
       position: relative;
       width: 100%;
@@ -28,10 +31,12 @@
       transform-style: preserve-3d;
       cursor: pointer;
     }
+
     .card:hover .card-inner,
     .card-inner.flipped {
       transform: rotateY(180deg);
     }
+
     .card-front, .card-back {
       position: absolute;
       width: 100%;
@@ -41,9 +46,11 @@
       overflow: hidden;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
+
     .card-front {
       background: url('save%20the%20date%20front.png') no-repeat center/cover;
     }
+
     .card-back {
       background-color: #fdf9f8;
       transform: rotateY(180deg);
@@ -54,26 +61,31 @@
       box-sizing: border-box;
       overflow-y: auto;
     }
+
     .text-section {
       font-size: 14px;
       color: #6b4e4e;
       text-align: center;
       margin-bottom: 20px;
     }
+
     .text-section b {
       font-size: 16px;
       display: block;
       margin-bottom: 10px;
     }
+
     .german {
       font-style: italic;
     }
+
     form {
       display: flex;
       flex-direction: column;
       gap: 10px;
       margin-top: 10px;
     }
+
     input, textarea, select, button {
       font-family: inherit;
       padding: 8px;
@@ -81,21 +93,48 @@
       border-radius: 8px;
       font-size: 14px;
     }
+
     button {
       background-color: #b39292;
       color: white;
       cursor: pointer;
       transition: background-color 0.3s;
     }
+
     button:hover {
       background-color: #946e6e;
+    }
+
+    /* Flip hint overlay */
+    .flip-hint {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: rgba(0, 0, 0, 0.6);
+      color: white;
+      padding: 10px 16px;
+      border-radius: 10px;
+      font-size: 13px;
+      text-align: center;
+      pointer-events: none;
+      opacity: 1;
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    .flip-hint.hide {
+      opacity: 0;
     }
   </style>
 </head>
 <body>
   <div class="card">
     <div class="card-inner">
-      <div class="card-front"></div>
+      <div class="card-front">
+        <div class="flip-hint" id="flipHint">
+          Tap to flip<br><span style="font-size: 12px;">Zum Umdrehen tippen</span>
+        </div>
+      </div>
       <div class="card-back">
         <div class="text-section">
           <b>Dear Friends & Family</b>
@@ -128,8 +167,15 @@
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const cardInner = document.querySelector('.card-inner');
+      const flipHint = document.getElementById('flipHint');
+
       cardInner.addEventListener('click', () => {
         cardInner.classList.toggle('flipped');
+
+        // Hide the flip hint after first tap
+        if (flipHint && !flipHint.classList.contains('hide')) {
+          flipHint.classList.add('hide');
+        }
       });
     });
   </script>
