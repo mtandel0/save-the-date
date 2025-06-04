@@ -120,6 +120,7 @@
       pointer-events: none;
       opacity: 1;
       transition: opacity 0.5s ease-in-out;
+      z-index: 10;
     }
 
     .flip-hint.hide {
@@ -164,23 +165,21 @@
     </div>
   </div>
 
- script
-  document.addEventListener('DOMContentLoaded', () = {
-    const card = document.querySelector('.card');
-    const cardInner = document.querySelector('.card-inner');
-    const flipHint = document.getElementById('flipHint');
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const card = document.querySelector('.card');
+      const cardInner = document.querySelector('.card-inner');
+      const flipHint = document.getElementById('flipHint');
 
-    card.addEventListener('click', () = {
-      cardInner.classList.toggle('flipped');
+      card.addEventListener('click', () => {
+        cardInner.classList.toggle('flipped');
 
-       Hide the flip hint after first tap
-      if (flipHint && !flipHint.classList.contains('hide')) {
-        flipHint.classList.add('hide');
-      }
+        // Hide the flip hint after first tap
+        if (flipHint && !flipHint.classList.contains('hide')) {
+          flipHint.classList.add('hide');
+        }
+      });
     });
-  });
-script
-
   </script>
 </body>
 </html>
