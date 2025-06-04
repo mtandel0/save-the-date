@@ -42,9 +42,12 @@
       width: 100%;
       height: 100%;
       backface-visibility: hidden;
-      border-radius: 20px;
       overflow: hidden;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+      /* Arch-shaped clip */
+      clip-path: path('M0,640 Q0,0 200,0 Q400,0 400,640 Z');
+      -webkit-clip-path: path('M0,640 Q0,0 200,0 Q400,0 400,640 Z');
     }
 
     .card-front {
@@ -149,19 +152,18 @@
           <br><br>
           Wer zur Hochzeit nach Deutschland kommen möchte, den bitten wir um eine frühzeitige Zusage. Bitte gebt Bescheid, ob ihr kommen könnt, und teilt uns eure Adresse mit.
         </div>
-        <form action="https://formspree.io/f/xnnvnazp" method="POST">
-  <input type="text" name="name" placeholder="Your Full Name" required>
-  <input type="email" name="email" placeholder="Your Email Address" required>
-  <textarea name="address" placeholder="Your Mailing Address" rows="3" required></textarea>
-  <select name="attendance" required>
-    <option value="" disabled selected>Will you attend in Germany?</option>
-    <option value="Yes">Yes</option>
-    <option value="No">No</option>
-    <option value="Maybe">Maybe</option>
-  </select>
-  <button type="submit">Send RSVP</button>
-</form>
-
+        <form action="https://formspree.io/f/mnqeyyrr" method="POST">
+          <input type="text" name="name" placeholder="Your Full Name" required>
+          <input type="email" name="email" placeholder="Your Email Address" required>
+          <textarea name="address" placeholder="Your Mailing Address" rows="3" required></textarea>
+          <select name="attendance" required>
+            <option value="" disabled selected>Will you attend in Germany?</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+            <option value="Maybe">Maybe</option>
+          </select>
+          <button type="submit">Send RSVP</button>
+        </form>
       </div>
     </div>
   </div>
